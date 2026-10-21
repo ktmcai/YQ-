@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-heading">
+  <div><h1>产品资料</h1><p class="intro">已发布的 PDF 和网页链接会自动显示在官网资料区。草稿仅管理员可见。</p></div>
+  <a class="button primary" href="{{ url_for('edit') }}">新增资料</a>
+</div>
+{% if documents %}
+<ul class="document-list">
+  {% for item in documents %}
+  <li class="document-row">
+    <div class="document-info">
+      <div class="document-heading"><h2>{{ item.title }}</h2><span class="status {{ 'published' if item.published else 'draft' }}">{{ '已发布' if item.published else '草稿' }}</span></div>
+      <p class="filename">{{ item.external_url if item.source_type == 'url' else item.original_name }}</p>
+      <p class="metadata">{% if item.source_type == 'url' %}网页链接{% else %}PDF · {{ item.page_count }} 页 · {{ '%.2f'|format(item.byte_size / 1048576) }} MB{% endif %}</p>
+    </div>
+    <div class="row-actions">
+      <a class="button small" href="{{ item.external_url if item.source_type == 'url' else '/document.html?id=' ~ item.id }}" target="_blank" rel="noopener noreferrer">{{ '打开链接' if item.source_type == 'url' else '预览' }}</a>
+      <a class="button small" href="{{ url_for('edit', document_id=item.id) }}">编辑</a>
+      <form method="post" action="{{ url_for('visibility', document_id=item.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="button small" type="submit">{{ '下架' if item.published else '发布' }}</button></form>
+      <form method="post" action="{{ url_for('delete', document_id=item.id) }}" data-confirm="确定删除这份资料{{ '及 PDF 文件' if item.source_type == 'pdf' else '' }}？此操作无法撤销。"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}" /><button class="button small danger" type="submit">删除</button></form>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<section class="panel empty-state"><h2>添加第一份产品资料</h2><p>上传 PDF 或填写网页链接，保存为草稿或直接发布。已有的快速选型入口会继续保留。</p><a class="button" href="{{ url_for('edit') }}">新增资料</a></section>
+{% endif %}
+{% endblock %}

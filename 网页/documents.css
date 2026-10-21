@@ -1,0 +1,13 @@
+.pdf-document-card{display:flex;flex-direction:column;min-height:180px;background:#eef5ff;border-color:#c6daf5;transition:background .22s,border-color .22s}
+.pdf-document-card:hover{transform:none;box-shadow:none;background:#e4efff;border-color:#98bce9}
+.pdf-document-card .card-head{border-color:#c6daf5}
+.pdf-document-card .card-head h3{overflow-wrap:anywhere;letter-spacing:-.02em;color:#1756a5}
+.pdf-document-card .card-head p{color:#4d6683}
+.document-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:20px}
+.document-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 16px;border:1px solid #b8cbe0;border-radius:8px;background:#fff;color:#1458a5;font-size:13px;font-weight:600;line-height:1.5;transition:background .18s,border-color .18s}
+.document-link:hover{border-color:#166bd4;background:#edf5ff}
+.document-link.primary{border-color:#166bd4;background:#166bd4;color:#fff}
+.document-link.primary:hover{border-color:#0c4fa7;background:#0c4fa7}
+.document-link:focus-visible{outline:2px solid #166bd4;outline-offset:3px}
+#documents>.document-status{grid-column:1 / -1;margin:0;color:#59666d;font-size:13px}
+@media(prefers-reduced-motion:reduce){.pdf-document-card,.document-link{transition:none}}

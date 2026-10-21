@@ -1,0 +1,35 @@
+# 本地凭据和证书私钥
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+.env.*
+*.env
+!*.env.example
+文档管理登录信息.txt
+
+# Python 环境和缓存
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# 运行数据和备份；线上数据库及上传文件应单独备份
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+data/
+uploads/
+files/
+backups/
+*.log
+
+# 系统文件
+.DS_Store
+Thumbs.db
+Desktop.ini

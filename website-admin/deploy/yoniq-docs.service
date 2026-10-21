@@ -1,0 +1,21 @@
+[Unit]
+Description=YONIQ PDF document management
+After=network.target
+
+[Service]
+User=yoniq-docs
+Group=yoniq-docs
+WorkingDirectory=/opt/yoniq-docs
+EnvironmentFile=/etc/yoniq-docs.env
+ExecStart=/opt/yoniq-docs/venv/bin/gunicorn --workers 1 --threads 2 --timeout 120 --bind 127.0.0.1:8001 --access-logfile - app:create_app()
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/yoniq-docs
+
+[Install]
+WantedBy=multi-user.target

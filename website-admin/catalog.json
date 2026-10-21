@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "YONIQ AXIS",
+    "description": "一体化关节执行器",
+    "description_en": "Integrated joint actuators",
+    "wide": 1,
+    "products": [
+      {
+        "name": "JP57-08 G1",
+        "description": "行星一体化关节执行器",
+        "description_en": "Integrated planetary joint actuator",
+        "url": "https://tcnyx5kk9u7c.feishu.cn/docx/GSSXdAIAJocehkxhpbEcmxKVnRe?from=from_copylink"
+      },
+      {
+        "name": "JP57-40 G1",
+        "description": "行星一体化关节执行器",
+        "description_en": "Integrated planetary joint actuator",
+        "url": "https://tcnyx5kk9u7c.feishu.cn/docx/LW2ydbYwzoUKVmxVDAccMcdBntd?from=from_copylink"
+      },
+      {
+        "name": "JP62-48 G1",
+        "description": "行星一体化关节执行器",
+        "description_en": "Integrated planetary joint actuator",
+        "url": "/manuals/YONIQ_AXIS_JP62-48-G1.pdf"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "YONIQ GEAR",
+    "description": "精密减速器",
+    "description_en": "Precision gearboxes",
+    "wide": 0,
+    "products": []
+  },
+  {
+    "id": 3,
+    "name": "YONIQ MOTOR",
+    "description": "无框电机及专用电机",
+    "description_en": "Frameless and specialized motors",
+    "wide": 0,
+    "products": []
+  },
+  {
+    "id": 4,
+    "name": "YONIQ DRIVE",
+    "description": "电机驱动与运动控制",
+    "description_en": "Motor drives and motion control",
+    "wide": 1,
+    "products": [
+      {
+        "name": "DB1-V24-I15-CF-G1",
+        "description": "24 V 单轴嵌入式电机驱动板",
+        "description_en": "24 V single-axis embedded motor drive board",
+        "url": "https://tcnyx5kk9u7c.feishu.cn/docx/HQ30dgSqYoW9Z7xkozjcHs82nTc?from=from_copylink"
+      },
+      {
+        "name": "DB1-V36-I15-CF-G1",
+        "description": "36 V 单轴嵌入式电机驱动板",
+        "description_en": "36 V single-axis embedded motor drive board",
+        "url": "https://tcnyx5kk9u7c.feishu.cn/docx/T5YIdDLvJoelNlx2KaycLtdHnxd?from=from_copylink"
+      },
+      {
+        "name": "DB1-V48-I15-CF-G1",
+        "description": "48 V 单轴嵌入式电机驱动板",
+        "description_en": "48 V single-axis embedded motor drive board",
+        "url": "https://tcnyx5kk9u7c.feishu.cn/docx/B8zbdrASeoaAxyxKYDPcAwAanfe?from=from_copylink"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "YONIQ LINK",
+    "description": "调试与通信工具",
+    "description_en": "Debugging and communication tools",
+    "wide": 0,
+    "products": [
+      {
+        "name": "CF-1",
+        "description": "单通道 USB-CAN-FD / UART 调试器",
+        "description_en": "Single-channel USB-CAN-FD / UART debugger",
+        "url": "https://tcnyx5kk9u7c.feishu.cn/docx/YEefdI5cMohwyXxAVggcyat1nag"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "YONIQ STUDIO",
+    "description": "参数配置、调试与诊断软件",
+    "description_en": "Configuration, debugging and diagnostic software",
+    "wide": 0,
+    "products": [
+      {
+        "name": "YONIQ STUDIO",
+        "description": "上位机软件",
+        "description_en": "PC software",
+        "url": "https://tcnyx5kk9u7c.feishu.cn/wiki/EQ0ewITm0i3sYFkNSYecxgqtnhb?from=from_copylink"
+      }
+    ]
+  }
+]

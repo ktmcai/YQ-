@@ -1,0 +1,4 @@
+.product-load-state{grid-column:1 / -1;margin:0;padding:26px 4px;color:#59666d;font-size:14px}
+#products .card-head h3,#products .card-head p,#products .card-items strong,#products .card-items span{overflow-wrap:anywhere}
+.card-items .product-item{position:relative;display:block;padding:13px 70px 13px 13px;border-radius:10px;background:#fff;border:1px solid #edf0f2}
+.card-items .product-item b{color:#59666d;font-size:11px}

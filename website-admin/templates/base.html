@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{% block title %}内容管理{% endblock %} · YONIQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css', v='products-20261015') }}" />
+    <script src="{{ url_for('static', filename='admin.js', v='links-20261015') }}" defer></script>
+  </head>
+  <body>
+    <header class="admin-header">
+      <a class="brand" href="{{ url_for('dashboard') if g.admin else url_for('login') }}">YONIQ <span>内容管理</span></a>
+      <nav aria-label="后台导航">
+        <a href="/#documents" target="_blank" rel="noopener">查看官网 ↗</a>
+        {% if g.admin %}
+        <a href="{{ url_for('password') }}">修改密码</a>
+        <form method="post" action="{{ url_for('logout') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+          <button class="text-button" type="submit">退出登录</button>
+        </form>
+        {% endif %}
+      </nav>
+    </header>
+    <main class="{% block main_class %}workspace{% endblock %}">
+      {% if g.admin %}
+      <nav class="section-tabs" aria-label="管理栏目">
+        <a href="{{ url_for('catalog.products') }}" {% if request.endpoint and request.endpoint.startswith('catalog.') %}aria-current="page"{% endif %}>产品管理</a>
+        <a href="{{ url_for('dashboard') }}" {% if request.endpoint in ('dashboard','edit') %}aria-current="page"{% endif %}>资料管理</a>
+      </nav>
+      {% endif %}
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+      <p class="notice {{ category }}" role="status">{{ message }}</p>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
