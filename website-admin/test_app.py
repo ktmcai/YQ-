@@ -259,7 +259,7 @@ class DocumentManagementTests(unittest.TestCase):
             self.assertEqual(create_app(config).test_client().get("/api/documents/2").json, item)
 
     def product_form(self, **changes):
-        values = {"name": "新增产品", "description": "产品简介", "description_en": "Product description", "category_id": "1", "sort_order": "5", "link_type": "url", "url": "https://example.com/manual", "document_id": "", "action": "publish"}
+        values = {"name": "新增产品", "description": "产品简介", "description_en": "Product description", "category_id": "1", "series": "JP", "sort_order": "5", "link_type": "url", "url": "https://example.com/manual", "document_id": "", "action": "publish"}
         values.update(changes)
         return values
 
@@ -286,6 +286,55 @@ class DocumentManagementTests(unittest.TestCase):
         self.login()
         self.assertEqual(self.client.post("/admin/products/new", data=self.product_form()).status_code, 400)
         self.assertEqual(self.client.get("/admin/products/1/delete").status_code, 405)
+
+    def test_product_torque_save_edit_clear_and_restart(self):
+        self.login()
+        self.assertEqual(self.post('/admin/products/new', **self.product_form(rated_torque='2.5', peak_torque='6')).status_code, 302)
+        item = self.public_product('新增产品')
+        self.assertEqual((item['rated_torque'], item['peak_torque']), ('2.5', '6'))
+        page = self.client.get(f"/admin/products/{item['id']}/edit").get_data(as_text=True)
+        self.assertIn('name="rated_torque" value="2.5"', page)
+        self.assertEqual(self.post(f"/admin/products/{item['id']}/edit", **self.product_form(rated_torque='0', peak_torque='')).status_code, 302)
+        restarted = create_app(self.config).test_client().get('/api/products').json
+        saved = next(p for group in restarted for p in group['products'] if p['id'] == item['id'])
+        self.assertEqual((saved['rated_torque'], saved['peak_torque']), ('0', ''))
+        self.assertEqual(self.post(f"/admin/products/{item['id']}/edit", **self.product_form()).status_code, 302)
+        cleared = self.public_product('新增产品')
+        self.assertEqual((cleared['rated_torque'], cleared['peak_torque']), ('', ''))
+
+    def test_product_torque_rejects_invalid_values(self):
+        self.login()
+        for field in ('rated_torque', 'peak_torque'):
+            for value in ('-1', 'NaN', 'Infinity', '1e3', '6 N·m', '<script>', '1234567890123'):
+                with self.subTest(field=field, value=value):
+                    self.assertEqual(self.post('/admin/products/new', **self.product_form(**{field: value})).status_code, 400)
+        self.assertIsNone(self.public_product('新增产品'))
+
+    def test_product_torque_migration_preserves_existing_data(self):
+        before = self.visitor.get('/api/products').json
+        with sqlite3.connect(Path(self.storage.name) / 'documents.sqlite') as connection:
+            columns = ','.join(row[1] for row in connection.execute('PRAGMA table_info(products)') if row[1] not in ('rated_torque', 'peak_torque'))
+            connection.execute(f'CREATE TABLE legacy_products AS SELECT {columns} FROM products')
+            connection.execute('DROP TABLE products')
+            connection.execute('ALTER TABLE legacy_products RENAME TO products')
+        connection.close()
+        restarted = create_app(self.config).test_client()
+        self.assertEqual(restarted.get('/api/products').json, before)
+
+    def test_axis_series_migration_selection_and_category_move(self):
+        groups = self.visitor.get('/api/products').json
+        self.assertEqual([row['code'] for row in groups[0]['series']], ['JP', 'JS', 'JC'])
+        self.assertTrue(all(row['series'] == 'JP' for row in groups[0]['products']))
+        self.assertTrue(all(not group['series'] for group in groups[1:]))
+        self.login()
+        self.assertEqual(self.post('/admin/products/new', **self.product_form(series='JS')).status_code, 302)
+        self.assertEqual(self.public_product('新增产品')['series'], 'JS')
+        restarted = create_app(self.config).test_client()
+        self.assertEqual(restarted.get('/api/products').json[0]['products'][1]['series'], 'JS')
+        self.assertEqual(self.post('/admin/products/9/edit', **self.product_form(category_id='2', series='JC')).status_code, 302)
+        self.assertEqual(self.public_product('新增产品')['series'], '')
+        for series in ['', 'UNKNOWN']:
+            self.assertEqual(self.post('/admin/products/new', **self.product_form(series=series)).status_code, 400)
 
     def test_product_draft_publish_sort_move_and_delete(self):
         self.login()

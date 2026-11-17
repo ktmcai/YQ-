@@ -1,0 +1,112 @@
+<h2 id="section-1">安装包</h2>
+<h5 id="section-2"><strong>V1.0.1</strong></h5>
+<p><a href="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/YONIQ_STUDIO_V1.0.zip" download="">YONIQ_STUDIO_V1.0.zip</a></p>
+<h5 id="section-3"><strong>V1.0.2</strong></h5>
+<p>更新时间：2026/10/22</p>
+<p>更新内容：新增电机转矩脉动与摩擦辨识功能按钮。</p>
+<p><a href="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/YONIQ_STUDIO1.0.2_x64.zip" download="">YONIQ_STUDIO1.0.2_x64.zip</a></p>
+<h2 id="section-4">使用指南</h2>
+<h3 id="section-5">连接方式</h3>
+<h4 id="section-6">电机——&gt;串口TTL——&gt;上位机</h4>
+<ol>
+<li>确保波特率为921600.</li>
+</ol>
+<h4 id="section-7">电机——&gt;YONIQ LINK（UART模式）——&gt;上位机</h4>
+<ol>
+<li>
+<p>确保波特率为921600.</p>
+</li>
+<li>
+<p>YONIQ LINK需要拨到UART档位</p>
+</li>
+</ol>
+<h4 id="section-8">电机——&gt;YONIQ LINK（CANFD模式）——&gt;上位机</h4>
+<ol>
+<li><strong>确保电机CAN波特率为1M或1+2M，其它波特率均无法使用YONIQ LINK的CANFD模式。</strong></li>
+</ol>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2019.png" alt="image.png" loading="lazy" decoding="async" width="2510" height="1440"></p>
+<ol start="2">
+<li>YONIQ LINK需要拨到CANFD档位。</li>
+</ol>
+<h3 id="section-9">界面介绍</h3>
+<h4 id="section-10">设备连接界面</h4>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%205.png" alt="image.png" loading="lazy" decoding="async" width="2548" height="1484"></p>
+<p>连接后会自动扫描设备</p>
+<p>注意：只有id不同的设备才会被认为不同的设备，连接前请确保每个设备都具有独立的id（sysid:1-30,compid:1-255）。</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2021.png" alt="image.png" loading="lazy" decoding="async" width="2539" height="1487"></p>
+<h4 id="section-11">参数设置页</h4>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2011.png" alt="image.png" loading="lazy" decoding="async" width="2548" height="1456"></p>
+<p><strong>读取参数按钮：</strong>读取当前电机运行参数。<br>
+<strong>保存参数按钮：</strong>将当前参数写入RAM（掉电丢失）。<br>
+<strong>上位机控制：</strong>切换设备的控制状态，CANOPEN为总线控制，当处于上位机控制模式时CANOPEN命令将不会被执行。<br>
+<strong>清除错误：</strong>清除电机错误状态。<br>
+<strong>紧急停机：</strong>快速失能电机<br>
+<strong>保存至flash:</strong>将参数表保存至flash中，修改过的参数掉电不会丢失。<br>
+<strong>恢复出厂设置：</strong>将电机参数恢复出厂默认状态，同时清空电机辨识结果。</p>
+<h4 id="section-12">辨识校准页</h4>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2017.png" alt="image.png" loading="lazy" decoding="async" width="2536" height="1449"></p>
+<p><strong>方向辨识：</strong>辨识电机方向。<br>
+<strong>极对数辨识：</strong>辨识电机极对数。<br>
+<strong>电角度辨识：</strong>校准电机电角度。<br>
+<strong>编码器校准：</strong>校准电机编码器，有些电机无此功能。<br>
+<strong>当前位置设为零点：</strong>将当前位置设为位置0，保存至flash会断电恢复。</p>
+<h4 id="section-13">运动控制页</h4>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%203.png" alt="image.png" loading="lazy" decoding="async" width="2524" height="1377"></p>
+<p><strong>运行模式：</strong>切换电机模式。<br>
+<strong>参数：</strong>运行参数，回车或鼠标点击其他地方生效。<br>
+<strong>使能/失能：</strong>启动，停止电机。<br>
+<strong>力矩环参数：</strong>电流环PID。</p>
+<p><strong>位置速度环参数：</strong>位置环，速度环PID参数。</p>
+<h4 id="section-14">固件升级页</h4>
+<p>当前设备：当前所选设备</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image.png" alt="image.png" loading="lazy" decoding="async" width="2526" height="1446"></p>
+<p>当前系统：与当前设备系统id一样的设备</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2013.png" alt="image.png" loading="lazy" decoding="async" width="2545" height="1450"></p>
+<p>指定通道：手动勾选的设备</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%209.png" alt="image.png" loading="lazy" decoding="async" width="2543" height="1445"></p>
+<p>全设备：总线上所有设备</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2014.png" alt="image.png" loading="lazy" decoding="async" width="2536" height="1452"></p>
+<h3 id="section-15">操作示例：</h3>
+<h5 id="section-16">设备连接</h5>
+<ol>
+<li>打开上位机</li>
+</ol>
+<p>设备类型选择<code>电机设备</code></p>
+<p>波特率设置为<code>921600</code></p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2012.png" alt="image.png" loading="lazy" decoding="async" width="2354" height="1262"></p>
+<ol start="2">
+<li>切换至当前设备</li>
+</ol>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%208.png" alt="image.png" loading="lazy" decoding="async" width="2397" height="1467"></p>
+<p>左下角显示电机状态信息</p>
+<h5 id="section-17">修改电机参数</h5>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2016.png" alt="image.png" loading="lazy" decoding="async" width="2342" height="1321"></p>
+<p>修改后点击保存，修改值会保存到ram，并且立刻生效，断电会丢失，如果想要不丢失则点击保存至flash按钮（出现成功弹窗不代表已经写完flash，需要等待4-5s左右断电参数才能正常写入flash）。点击读取参数按钮可以验证数据是否成功写入。</p>
+<h5 id="section-18">电机辨识及霍尔校准</h5>
+<p>所有电机出厂前均已做好辨识以及校准，用户正常情况下无需进行这部分操作，如果因为特殊原因需要校准请将设备处于空载状态下进行，校准顺序按标号依次进行。</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2018.png" alt="image.png" loading="lazy" decoding="async" width="2433" height="1451"></p>
+<h5 id="section-19">运动控制</h5>
+<ol>
+<li>点击运动控制页，选择一个模式（此处以速度模式为例），输入目标速度后按下回车，然后点击使能。</li>
+</ol>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2020.png" alt="image.png" loading="lazy" decoding="async" width="2421" height="1467"></p>
+<p>电机的实时模式会在下方显示，可以次观察电机状态</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%202.png" alt="image.png" loading="lazy" decoding="async" width="2360" height="1432"></p>
+<ol start="2">
+<li>波形可以滚轮放大缩小，按下暂停键可以暂停当前波形，开始键可以继续波形，重置键可以恢复波形大小。</li>
+</ol>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2010.png" alt="image.png" loading="lazy" decoding="async" width="2451" height="1449"></p>
+<h5 id="section-20">固件升级</h5>
+<p>此处以当前设备升级为例，其它模式操作一样。</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%2015.png" alt="image.png" loading="lazy" decoding="async" width="2057" height="1161"></p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%201.png" alt="image.png" loading="lazy" decoding="async" width="2526" height="1348"></p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/387a69c36229799c8df6b99248ff3ed6.jpg" alt="387a69c36229799c8df6b99248ff3ed6.jpg" loading="lazy" decoding="async" width="4032" height="3024"></p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/3514fe5de02702f8d2cee5203488bbc3.jpg" alt="3514fe5de02702f8d2cee5203488bbc3.jpg" loading="lazy" decoding="async" width="4032" height="3024"></p>
+<p>成功进入升级模式后升级日志会有提示并且电机指示灯会以红/绿交替模式闪烁。</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%206.png" alt="image.png" loading="lazy" decoding="async" width="2543" height="1460"></p>
+<p>升级过程中不能断开连接，否则会升级失败导致下次无法进入正常的控制模式。</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%207.png" alt="image.png" loading="lazy" decoding="async" width="2543" height="1449"></p>
+<p>成功会打印成功信息，点击退出升级（或设备断电重启）会重新执行电机控制模式，需要重连上位机曲线才会刷新。</p>
+<p><strong>注意：</strong></p>
+<p>如果升级过程中通讯意外断开会导致电机固件缺失而无法进行正常控制，此时重连设备重新上电会直接进入升级模式，且ID固定为（1,25），仅需重新选择固件进行烧录即可恢复正常。</p>
+<p><img src="/guides/studio/%E5%9B%BE%E7%89%87%E5%92%8C%E9%99%84%E4%BB%B6/image%204.png" alt="image.png" loading="lazy" decoding="async" width="2521" height="1433"></p>

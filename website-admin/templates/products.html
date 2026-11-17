@@ -8,7 +8,7 @@
   <li class="document-row" data-product-id="{{ item.id }}">
     <div class="document-info">
       <div class="document-heading"><h2>{{ item.name }}</h2><span class="status {{ 'published' if item.published else 'draft' }}">{{ '已发布' if item.published else '草稿' }}</span></div>
-      <p class="filename">{{ item.category_name }}{% if item.description %} · {{ item.description }}{% endif %}</p>
+      <p class="filename">{{ item.category_name }}{% if item.series %} / {{ item.series }}{% endif %}{% if item.description %} · {{ item.description }}{% endif %}</p>
       <p class="metadata">排序 {{ item.sort_order }} · {% if item.link_type == 'url' %}网页链接{% elif item.link_type == 'pdf' and item.document_title %}PDF：{{ item.document_title }}{{ '（已发布）' if item.document_published else '（尚未发布）' }}{% elif item.link_type == 'pdf' %}关联 PDF 已删除，请重新选择{% else %}暂未添加资料链接{% endif %}</p>
     </div>
     <div class="row-actions">

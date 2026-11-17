@@ -40,8 +40,21 @@
       const frame = document.querySelector('#pdf-viewer');
       frame.title = item.title;
       frame.hidden = false;
+      document.addEventListener('webviewerloaded', (event) => {
+        const viewer = event.detail.source;
+        const options = viewer.PDFViewerApplicationOptions;
+        options.set('disablePreferences', true);
+        options.set('defaultZoomValue', 'page-fit');
+        options.set('viewOnLoad', 1);
+        options.set('annotationEditorMode', -1);
+        options.set('localeProperties', { lang: english ? 'en-US' : 'zh-CN' });
+        const stylesheet = viewer.document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = '/pdf-viewer.css?v=20261021';
+        viewer.document.head.append(stylesheet);
+      }, { once: true });
       requestAnimationFrame(() => {
-        frame.src = `/documents/${identifier}/view#view=Fit`;
+        frame.src = `/vendor/pdfjs-6.4.299-legacy/web/viewer.html?file=${encodeURIComponent(`/documents/${identifier}/view`)}#page=1&zoom=page-fit`;
       });
     })
     .catch(unavailable);

@@ -26,7 +26,7 @@ html{scroll-padding-top:126px}
     @media(min-width:801px){body{zoom:1.25}}
     </style>
     <link rel="stylesheet" href="documents.css?v=20261015-blue-cards" />
-    <link rel="stylesheet" href="products.css?v=20261015" />
+    <link rel="stylesheet" href="products.css?v=20261112-torque" />
   </head>
   <body>
     <header class="site-header">
@@ -60,9 +60,9 @@ html{scroll-padding-top:126px}
 
       <section class="service-strip" id="documents">
         <div><p class="section-label">DOCUMENTS</p><h2 data-en="Product documentation">产品资料</h2></div>
-        <a class="product-card documents-action" href="https://tcnyx5kk9u7c.feishu.cn/wiki/C7SKwVeB8iJ2gTkeQE4cymV6nxv" target="_blank" rel="noopener noreferrer">
+        <a class="product-card documents-action" href="/guides.html?doc=selection">
           <div class="card-head"><div><h3 data-en="Quick selection guide">快速选型</h3><p data-en="Product selection reference">产品选型参考</p></div><span class="card-arrow" aria-hidden="true">↗</span></div>
-          <p class="selection-description" data-en="Open the Feishu selection guide">打开飞书选型文档</p>
+          <p class="selection-description" data-en="View specifications and drawings online">站内查看参数与工程图</p>
         </a>
       </section>
       <section class="contact-strip" id="support"><span data-en="Technical support and product inquiries">技术支持与产品咨询</span><span id="contact" class="contact-placeholder" data-en="Contact: Mr. Zhang Z4013iii">联系方式：</span></section>
@@ -72,19 +72,51 @@ html{scroll-padding-top:126px}
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script>
 const navigationLinks = Array.from(document.querySelectorAll('.main-nav a[href^="#"]'));
+const navigationTargets = navigationLinks.map((link) => ({
+  hash: link.hash,
+  element: document.querySelector(link.hash),
+}));
+const navigationHeader = document.querySelector('.site-header');
+let navigationFrame = 0;
 
 function updateNavigation() {
-  const hash = navigationLinks.some((link) => link.hash === location.hash) ? location.hash : '#products';
+  navigationFrame = 0;
+  const offset = Math.max(
+    parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0,
+    navigationHeader.getBoundingClientRect().bottom + 16
+  );
+  const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  const targets = navigationTargets.map(({ hash, element }) => ({
+    hash,
+    top: Math.min(maxScroll, Math.max(0, element.getBoundingClientRect().top + window.scrollY - offset)),
+  }));
+  let current = targets[0];
+  targets.forEach((target) => {
+    if (target.top <= window.scrollY + 2) current = target;
+  });
+  // Short sections at the page end can share the same reachable scroll position.
+  const requested = targets.find((target) => target.hash === location.hash);
+  if (requested && Math.abs(requested.top - current.top) <= 2) current = requested;
   navigationLinks.forEach((link) => {
-    const active = link.hash === hash;
+    const active = link.hash === current.hash;
     link.classList.toggle('active', active);
     if (active) link.setAttribute('aria-current', 'location');
     else link.removeAttribute('aria-current');
   });
 }
 
-window.addEventListener('hashchange', updateNavigation);
-updateNavigation();
+function scheduleNavigationUpdate() {
+  if (!navigationFrame) navigationFrame = requestAnimationFrame(updateNavigation);
+}
+
+window.addEventListener('scroll', scheduleNavigationUpdate, { passive: true });
+window.addEventListener('resize', scheduleNavigationUpdate);
+window.addEventListener('hashchange', scheduleNavigationUpdate);
+window.addEventListener('pageshow', scheduleNavigationUpdate);
+const navigationResizeObserver = new ResizeObserver(scheduleNavigationUpdate);
+navigationResizeObserver.observe(document.querySelector('main'));
+navigationResizeObserver.observe(navigationHeader);
+scheduleNavigationUpdate();
 
 const languageButton = document.querySelector('.language');
 const translatedText = Array.from(document.querySelectorAll('[data-en]'), (element) => ({
@@ -145,6 +177,6 @@ document.querySelectorAll('.product-list a[href^="manuals/"]').forEach((link) =>
 
     </script>
     <script src="documents.js?v=20261015-links" defer></script>
-    <script src="products.js?v=20261021-1" defer></script>
+    <script src="products.js?v=20261112-torque" defer></script>
   </body>
 </html>

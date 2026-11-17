@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}编辑在线文档{% endblock %}
+{% block editor_assets %}
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/jodit-4.19.10/jodit.min.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='guide-editor.css', v='20261109') }}" />
+<script src="{{ url_for('static', filename='vendor/jodit-4.19.10/jodit.min.js') }}" defer></script>
+<script src="{{ url_for('static', filename='guide-editor.js', v='20261109') }}" defer></script>
+{% endblock %}
+{% block content %}
+<a class="back-link" href="{{ url_for('guides.listing') }}">← 返回在线文档</a>
+{% if guide.slug in feishu_sources %}<p class="notice">这份资料已绑定飞书来源。在网站内的修改会被下一次飞书同步覆盖，日常更新请优先在<a href="{{ feishu_sources[guide.slug].url }}" target="_blank" rel="noopener">飞书原文档</a>中完成。</p>{% endif %}
+<div class="page-heading"><div><h1>编辑在线文档</h1><p class="intro">{{ guide.category }} · 保存后更新官网，原来的阅读地址保持不变。</p></div><a class="button" href="/guides.html?doc={{ guide.slug }}" target="_blank" rel="noopener">查看当前官网 ↗</a></div>
+{% if error %}<p class="notice error" role="alert">{{ error }}</p>{% endif %}
+<form method="post" id="guide-form" class="editor-form" data-upload-url="{{ url_for('guides.upload', slug=guide.slug) }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <input type="hidden" name="version" value="{{ values.version }}" />
+  <div class="guide-fields"><div class="field"><label for="guide-title">文档标题</label><input id="guide-title" name="title" value="{{ values.title }}" maxlength="120" required /></div><div class="field"><label for="guide-label">目录名称</label><input id="guide-label" name="label" value="{{ values.label }}" maxlength="120" required /></div></div>
+  <div class="field"><label for="guide-classification">文档分类 / 系列</label><select id="guide-classification" name="classification">{% for value, label in guide_categories.items() %}<option value="{{ value }}" {% if values.classification == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select><p class="help">用于官网文档目录分组。调整分类不改变阅读地址，飞书同步也会保留此设置。</p></div>
+  <div class="field"><label for="guide-content">正文</label>
+    <div class="form-actions"><button type="button" class="button small" id="insert-image">插入图片</button><button type="button" class="button small" id="insert-file">插入附件</button><span class="help">选中表格中的单元格可编辑、增删行列或合并单元格。</span></div>
+    <input type="file" id="image-upload" accept=".png,.jpg,.jpeg,.gif,.webp" hidden />
+    <input type="file" id="file-upload" accept=".pdf,.zip,.stp,.step,.json,.bin,.hex" hidden />
+    <p id="upload-status" class="help" role="status">图片最大 10 MB；附件最大 150 MB。上传后请保存，才会显示在官网。</p>
+    <textarea id="guide-content" name="content_html">{{ values.content_html }}</textarea>
+  </div>
+  <div class="form-actions guide-save"><button class="button primary" type="submit" id="save-guide" disabled>保存并更新官网</button><a class="button quiet" href="{{ url_for('guides.listing') }}">返回列表</a><span id="save-status" class="help" role="status">正在加载编辑器…</span></div>
+  <noscript><p class="notice error">请启用浏览器 JavaScript 后编辑文档。</p></noscript>
+</form>
+{% endblock %}

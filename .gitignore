@@ -33,3 +33,7 @@ backups/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# 本地依赖和在线文档运行文件
+node_modules/
+guide-files/

@@ -6,7 +6,8 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>{% block title %}内容管理{% endblock %} · YONIQ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='admin.css', v='products-20261015') }}" />
-    <script src="{{ url_for('static', filename='admin.js', v='links-20261015') }}" defer></script>
+    <script src="{{ url_for('static', filename='admin.js', v='axis-20261109') }}" defer></script>
+    {% block editor_assets %}{% endblock %}
   </head>
   <body>
     <header class="admin-header">
@@ -27,6 +28,7 @@
       <nav class="section-tabs" aria-label="管理栏目">
         <a href="{{ url_for('catalog.products') }}" {% if request.endpoint and request.endpoint.startswith('catalog.') %}aria-current="page"{% endif %}>产品管理</a>
         <a href="{{ url_for('dashboard') }}" {% if request.endpoint in ('dashboard','edit') %}aria-current="page"{% endif %}>资料管理</a>
+        <a href="{{ url_for('guides.listing') }}" {% if request.endpoint and request.endpoint.startswith('guides.') %}aria-current="page"{% endif %}>在线文档</a>
       </nav>
       {% endif %}
       {% for category, message in get_flashed_messages(with_categories=true) %}

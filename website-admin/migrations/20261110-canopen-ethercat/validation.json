@@ -1,0 +1,10 @@
+{
+  "source_sha256": "e83081be74d2c1bf5bb2bc9353c2d7913bad6ef723b7fffcd154d2dcf092042d",
+  "html_sha256": "ffbf31d648ed7bbc59665c8f03b59c4e27a70919cfde2bc88c45e9d3b9d399cb",
+  "pdf_sha256": "084332e84fe6ba669831ebf8b87c96b2edcf62cfdb7f0ff24d5932358402c5f6",
+  "headings": 97,
+  "tables": 34,
+  "rows": 296,
+  "body_characters": 19717,
+  "result": "All body text, headings, and every table cell match the Word source; printed TOC omitted in favor of website outline."
+}

@@ -4,6 +4,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from flask import Blueprint, abort, flash, jsonify, redirect, render_template, request, url_for
+from taxonomy import AXIS, AXIS_SERIES
 
 
 def register_products(app, db):
@@ -41,6 +42,16 @@ def register_products(app, db):
                     for order, item in enumerate(category["products"]):
                         db().execute("INSERT INTO products (category_id,name,description,description_en,link_type,url,sort_order,published) VALUES (?,?,?,?,?,?,?,1)", (category["id"], item["name"], item["description"], item["description_en"], "url", item["url"], order * 10))
                 db().execute("INSERT INTO catalog_migrations VALUES ('initial')")
+        if 'series' not in {row['name'] for row in db().execute('PRAGMA table_info(products)')}:
+            with db():
+                db().execute("ALTER TABLE products ADD COLUMN series TEXT NOT NULL DEFAULT ''")
+                for branch in AXIS_SERIES:
+                    db().execute('UPDATE products SET series=? WHERE category_id IN (SELECT id FROM product_categories WHERE name=?) AND UPPER(name) LIKE ?', (branch['code'], AXIS, branch['code'] + '%'))
+        columns = {row['name'] for row in db().execute('PRAGMA table_info(products)')}
+        with db():
+            for field in ('rated_torque', 'peak_torque'):
+                if field not in columns:
+                    db().execute(f"ALTER TABLE products ADD COLUMN {field} TEXT NOT NULL DEFAULT ''")
 
     def categories():
         return db().execute("SELECT * FROM product_categories ORDER BY sort_order,id").fetchall()
@@ -72,14 +83,21 @@ def register_products(app, db):
         groups = categories()
         documents = db().execute("SELECT id,title,published FROM documents WHERE source_type='pdf' ORDER BY id DESC").fetchall()
         values = dict(item) if item else {"name": "", "description": "", "description_en": "", "category_id": groups[0]["id"], "sort_order": 0, "link_type": "url", "url": "", "document_id": None}
+        values.setdefault('series', 'JP')
+        values.setdefault('rated_torque', '')
+        values.setdefault('peak_torque', '')
         error = None
         if request.method == "POST":
-            values.update({key: request.form.get(key, "").strip() for key in ("name", "description", "description_en", "category_id", "sort_order", "link_type", "url", "document_id")})
+            values.update({key: request.form.get(key, "").strip() for key in ("name", "description", "description_en", "category_id", "sort_order", "link_type", "url", "document_id", "series", "rated_torque", "peak_torque")})
             try:
                 if not 1 <= len(values["name"]) <= 120:
                     raise ValueError("产品名称需要 1 至 120 个字符。")
                 if len(values["description"]) > 240 or len(values["description_en"]) > 240:
                     raise ValueError("产品简介最多 240 个字符。")
+                for field in ('rated_torque', 'peak_torque'):
+                    value = values[field]
+                    if value and (len(value) > 12 or not re.fullmatch(r'[0-9]+(?:\.[0-9]+)?', value)):
+                        raise ValueError('扭矩请填写不超过 12 个字符的非负数字，单位为 N·m；不填写的参数不会显示。')
                 try:
                     category_id = int(values["category_id"])
                     sort_order = int(values["sort_order"])
@@ -87,6 +105,10 @@ def register_products(app, db):
                     raise ValueError("请选择产品分类，并填写有效的排序数字。")
                 if category_id not in [category["id"] for category in groups]:
                     raise ValueError("所选分类不存在，请重新选择。")
+                axis = next(category for category in groups if category['id'] == category_id)['name'] == AXIS
+                series = values['series'] if axis else ''
+                if axis and series not in [branch['code'] for branch in AXIS_SERIES]:
+                    raise ValueError('请选择 AXIS 产品所属的 JP、JS 或 JC 系列。')
                 if not 0 <= sort_order <= 9999:
                     raise ValueError("排序需要填写 0 至 9999 的整数，数字越小越靠前。")
                 link_type = values["link_type"]
@@ -114,17 +136,17 @@ def register_products(app, db):
                         raise ValueError("所选 PDF 已删除，请重新选择。")
                     if published and not linked["published"]:
                         raise ValueError("请先在资料管理中发布这份 PDF，或将产品保存为草稿。")
-                fields = (category_id, values["name"], values["description"], values["description_en"], link_type, url, document_id, sort_order, published)
+                fields = (category_id, values["name"], values["description"], values["description_en"], link_type, url, document_id, sort_order, published, series, values['rated_torque'], values['peak_torque'])
                 with db():
                     if item:
-                        db().execute("UPDATE products SET category_id=?,name=?,description=?,description_en=?,link_type=?,url=?,document_id=?,sort_order=?,published=?,updated_at=CURRENT_TIMESTAMP WHERE id=?", (*fields, product_id))
+                        db().execute("UPDATE products SET category_id=?,name=?,description=?,description_en=?,link_type=?,url=?,document_id=?,sort_order=?,published=?,series=?,rated_torque=?,peak_torque=?,updated_at=CURRENT_TIMESTAMP WHERE id=?", (*fields, product_id))
                     else:
-                        db().execute("INSERT INTO products (category_id,name,description,description_en,link_type,url,document_id,sort_order,published) VALUES (?,?,?,?,?,?,?,?,?)", fields)
+                        db().execute("INSERT INTO products (category_id,name,description,description_en,link_type,url,document_id,sort_order,published,series,rated_torque,peak_torque) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", fields)
                 flash("产品已发布，刷新官网即可查看。" if published else "产品草稿已保存。", "success")
                 return redirect(url_for("catalog.products"))
             except ValueError as problem:
                 error = str(problem)
-        return render_template("product_edit.html", product=item, values=values, categories=groups, documents=documents, error=error), 400 if error else 200
+        return render_template("product_edit.html", product=item, values=values, categories=groups, documents=documents, error=error, axis_series=AXIS_SERIES), 400 if error else 200
 
     @catalog.post("/admin/products/<int:product_id>/visibility")
     def product_visibility(product_id):
@@ -154,8 +176,17 @@ def register_products(app, db):
         result = []
         for category in categories():
             group = dict(category)
-            group["products"] = [{"id": item["id"], "name": item["name"], "description": item["description"], "description_en": item["description_en"], "href": destination(item), "external": item["link_type"] == "url" and item["url"].startswith(("http://", "https://"))} for item in items if item["category_id"] == category["id"]]
+            group['series'] = []
+            if category['name'] == AXIS:
+                for branch in AXIS_SERIES:
+                    guide = db().execute('SELECT slug FROM guides WHERE category=? AND series=? AND published=1 ORDER BY sort_order,slug LIMIT 1', (AXIS, branch['code'])).fetchone()
+                    group['series'].append({**branch, 'guide_href': '/guides.html?doc=' + guide['slug'] if guide else None})
+            group["products"] = [{"id": item["id"], "name": item["name"], "series": item['series'], "description": item["description"], "description_en": item["description_en"], "rated_torque": item['rated_torque'], "peak_torque": item['peak_torque'], "href": destination(item), "external": item["link_type"] == "url" and item["url"].startswith(("http://", "https://"))} for item in items if item["category_id"] == category["id"]]
             result.append(group)
         return jsonify(result)
+
+    @catalog.get('/api/axis-series')
+    def axis_series():
+        return jsonify(AXIS_SERIES)
 
     app.register_blueprint(catalog)

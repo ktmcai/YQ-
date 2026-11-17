@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文档中心 · YONIQ</title>
+    <link rel="stylesheet" href="guides.css?v=20261112-typography" />
+    <script src="guides.js?v=20261112-edge" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">跳至正文</a>
+    <header class="docs-header">
+      <a class="brand" href="/">YONIQ</a>
+      <span data-en="Documentation">文档中心</span>
+      <a class="back-link" href="/#products" data-en="← Products">← 产品中心</a>
+    </header>
+    <div class="sidebar-controls">
+      <button id="outline-toggle" class="sidebar-toggle" type="button" aria-label="展开本页目录" aria-expanded="false" aria-controls="page-outline" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="expand-icon" d="M4 5h16M4 12h12M4 19h16"/><path class="collapse-icon" d="m11 4-8 8 8 8m10-16-8 8 8 8"/></svg>
+      </button>
+      <button id="menu-toggle" class="sidebar-toggle" type="button" aria-label="展开文档目录" aria-expanded="false" aria-controls="document-sidebar">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="expand-icon" d="M4 5h16M4 12h12M4 19h16"/><path class="collapse-icon" d="m11 4-8 8 8 8m10-16-8 8 8 8"/></svg>
+      </button>
+    </div>
+    <div class="docs-layout">
+      <aside class="page-outline" id="page-outline" aria-labelledby="outline-title" hidden>
+        <h2 id="outline-title" data-en="On this page">本页目录</h2>
+        <nav id="document-outline" aria-labelledby="outline-title"></nav>
+      </aside>
+      <main id="content" tabindex="-1">
+        <p id="document-status" role="status" data-en="Loading document…">正在加载文档…</p>
+        <div id="document-heading" hidden>
+          <p id="document-category" class="muted"></p>
+          <h1 id="document-title"></h1>
+        </div>
+        <article id="document-body"></article>
+        <footer id="document-footer" hidden>
+          <a href="/#documents" data-en="← Product documentation">← 产品资料</a>
+          <a href="#content" data-en="Back to top ↑">返回顶部 ↑</a>
+        </footer>
+      </main>
+      <aside id="document-sidebar" class="document-sidebar">
+        <label for="document-search" data-en="Search documentation">搜索文档</label>
+        <input id="document-search" type="search" placeholder="输入型号或关键词" autocomplete="off" />
+        <p id="search-status" class="muted" role="status"></p>
+        <nav id="document-list" aria-label="文档列表"></nav>
+      </aside>
+    </div>
+  </body>
+</html>

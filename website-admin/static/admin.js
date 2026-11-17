@@ -40,6 +40,16 @@ document.querySelectorAll('form[data-upload]').forEach((form) => {
 
 document.querySelectorAll('form[data-product-editor]').forEach((form) => {
   const type = form.querySelector('[name="link_type"]');
+  const category = form.querySelector('[name="category_id"]');
+  const seriesField = form.querySelector('[data-axis-series]');
+  function updateSeries() {
+    const active = category.selectedOptions[0]?.dataset.axis === 'true';
+    seriesField.hidden = !active;
+    seriesField.querySelector('select').disabled = !active;
+    seriesField.querySelector('select').required = active;
+  }
+  category.addEventListener('change', updateSeries);
+  updateSeries();
   function updateFields() {
     form.querySelectorAll('[data-link-field]').forEach((field) => {
       const active = field.dataset.linkField === type.value;

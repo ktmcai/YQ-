@@ -1,0 +1,8 @@
+.guide-fields{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+#guide-content{width:100%;min-height:520px;font:inherit}
+.jodit-container{--jd-color-border:#b9c5cf;--jd-color-text:#17191a}
+.jodit-wysiwyg{font:16px/1.75 "Segoe UI","Microsoft YaHei",Arial,sans-serif!important;padding:24px!important}
+.jodit-wysiwyg p{margin:12px 0}.jodit-wysiwyg h2{margin:28px 0 14px;font-size:24px}.jodit-wysiwyg h3{margin:24px 0 12px;font-size:20px}.jodit-wysiwyg h4,.jodit-wysiwyg h5{margin:20px 0 10px}
+.jodit-wysiwyg img{max-width:100%;height:auto}.jodit-wysiwyg table{border-collapse:collapse;width:100%;font-size:14px}.jodit-wysiwyg td,.jodit-wysiwyg th{padding:10px;border:1px solid #bdcbd6;min-width:80px}.jodit-wysiwyg th{background:#f0f4f8}.jodit-wysiwyg .table-scroll{overflow-x:auto}.jodit-wysiwyg pre{padding:16px;background:#f0f4f8;white-space:pre-wrap}.jodit-wysiwyg a{color:#166bd4;text-decoration:underline}
+.jodit-container .jodit-toolbar-button{border-radius:4px}.guide-save{position:sticky;bottom:0;z-index:1;padding:16px;background:#fff;border:1px solid #dce3e8;border-radius:8px}
+@media(max-width:700px){.guide-fields{grid-template-columns:1fr;gap:20px}.jodit-wysiwyg{padding:14px!important}.guide-save{position:static}.jodit-container{max-width:100%}}

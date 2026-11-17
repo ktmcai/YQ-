@@ -22,6 +22,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from products import register_products
+from guides import register_guides
 
 
 def create_app(config=None):
@@ -98,6 +99,9 @@ def create_app(config=None):
 
     @app.before_request
     def authenticate():
+        if request.path.startswith('/admin/guides/'):
+            request.max_content_length = 160 * 1024 * 1024 if request.path.endswith('/upload') else 2 * 1024 * 1024
+            request.max_form_memory_size = 2 * 1024 * 1024
         g.admin = False
         if session.get("authenticated"):
             admin = db().execute("SELECT auth_version FROM admin WHERE id=1").fetchone()
@@ -117,8 +121,9 @@ def create_app(config=None):
         response.headers["Referrer-Policy"] = "same-origin"
         response.headers["Cache-Control"] = "no-store"
         if request.path.startswith("/admin"):
+            style_policy = "style-src 'self' 'unsafe-inline'; " if request.endpoint == 'guides.edit' else "style-src 'self'; "
             response.headers["Content-Security-Policy"] = (
-                "default-src 'self'; script-src 'self'; style-src 'self'; "
+                "default-src 'self'; script-src 'self'; " + style_policy +
                 "base-uri 'none'; form-action 'self'; frame-ancestors 'none'"
             )
         return response
@@ -323,6 +328,7 @@ def create_app(config=None):
         return send_file(files_dir / item["stored_name"], mimetype="application/pdf", as_attachment=request.path.endswith("/download"), download_name=item["original_name"], conditional=True)
 
     register_products(app, db)
+    register_guides(app, db)
     return app
 
 

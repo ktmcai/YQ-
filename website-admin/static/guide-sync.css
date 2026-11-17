@@ -1,0 +1,12 @@
+.guide-sync-list .document-row{align-items:flex-start;flex-direction:column;gap:16px}
+.guide-sync-list .row-actions{max-width:100%}
+.guide-sync-list [data-sync-status]{margin-top:7px}
+.guide-sync-list .document-row{scroll-margin-top:24px}
+.guide-sync-list .sync-error{color:var(--danger)}
+.guide-import{padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.guide-import .intro{margin:8px 0 20px}
+.guide-import-fields{display:grid;grid-template-columns:minmax(0,1fr) 190px auto;align-items:end;gap:16px}
+.guide-import-fields button{min-height:46px}
+.guide-import .help{max-width:90ch;margin-top:12px}
+@media(max-width:760px){.guide-import-fields{grid-template-columns:minmax(0,1fr) auto}.guide-import-fields>.field:first-child{grid-column:1/-1}}
+@media(max-width:380px){.guide-import-fields{grid-template-columns:minmax(0,1fr)}.guide-import-fields button{width:100%}}

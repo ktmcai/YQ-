@@ -1,0 +1,1217 @@
+[
+  {
+    "text": "电机参数\t\t额定电压\t48V(支持24-48v)\r\n\t\t额定相/电源电流\t\"11.3A/7A(24V)\n11.3A/3.7A(48V)\"\r\n\t\t峰值电流\t8A\r\n\t\t额定扭矩\t7.5NM\r\n\t\t峰值扭矩\t27NM\r\n\t\t额定转速\t36rpm\r\n\t\t空载最大转速\t56rpm\r\n电机特征值\t\t减速比\t40：1\r\n\t\t极对数\t14\r\n结构与重量\t\t外径\t57mm\r\n\t\t高度\t55.75mm\r\n\t\t电机重量\t约370g\r\n编码器\t\t电机端编码器\t21bit\r\n\t\t负载端编码器\t16bit\r\n\t\t编码器类型\t磁编\r\n通讯\t\tCANOPEN\tCAN-10K/20K/50K/125K/250K/500K/800K/1000K\r\n\t\t串口\tUART-921600bps\r\n控制模式\t\t轮廓力矩\t串口/CANOPEN\r\n\t\t轮廓位置\t串口/CANOPEN\r\n\t\t轮廓速度\t串口/CANOPEN\r\n\t\tMIT模式\t串口/CANOPEN\r\n\t\t周期同步速度\tCANOPEN\r\n\t\t周期同步力矩\tCANOPEN\r\n\t\t周期同步位置\tCANOPEN\r\n保护\t\t过压保护\t软件过压保护，超过30V会关闭使能并报错\r\n\t\t欠压保护\t低于16V会触发硬件保护\r\n\t\t电机过温保护\t\"电机温度传感器超过120度会触发电机过温保护（值可由用户设定），\n电机失能并报错\"\r\n\t\t驱动过温保护\t\"电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错\"\r\n\t\t过速保护\t\"电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错\"\r\n\t\t过流保护\t母线电流超过阈值会触发硬件过流保护",
+    "rows": [
+      [
+        {
+          "text": "电机参数",
+          "rowspan": 7,
+          "colspan": 2
+        },
+        {
+          "text": "额定电压",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "48V(支持24-48v)",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定相/电源电流",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "11.3A/7A(24V)\n11.3A/3.7A(48V)",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "峰值电流",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "8A",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定扭矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "7.5NM",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "峰值扭矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "27NM",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定转速",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "36rpm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "空载最大转速",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "56rpm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机特征值",
+          "rowspan": 2,
+          "colspan": 2
+        },
+        {
+          "text": "减速比",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "40：1",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "极对数",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "14",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "结构与重量",
+          "rowspan": 3,
+          "colspan": 2
+        },
+        {
+          "text": "外径",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "57mm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "高度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "55.75mm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机重量",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "约370g",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "编码器",
+          "rowspan": 3,
+          "colspan": 2
+        },
+        {
+          "text": "电机端编码器",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "21bit",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "负载端编码器",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "16bit",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "编码器类型",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "磁编",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "通讯",
+          "rowspan": 2,
+          "colspan": 2
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CAN-10K/20K/50K/125K/250K/500K/800K/1000K",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "串口",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "UART-921600bps",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "控制模式",
+          "rowspan": 7,
+          "colspan": 2
+        },
+        {
+          "text": "轮廓力矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "轮廓位置",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "轮廓速度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "MIT模式",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步速度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步力矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步位置",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "保护",
+          "rowspan": 6,
+          "colspan": 2
+        },
+        {
+          "text": "过压保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "软件过压保护，超过30V会关闭使能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "欠压保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "低于16V会触发硬件保护",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机过温保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机温度传感器超过120度会触发电机过温保护（值可由用户设定），\n电机失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "驱动过温保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "过速保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "过流保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "母线电流超过阈值会触发硬件过流保护",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ]
+    ],
+    "blockId": "Kk0KdMnQooZBfIxhwHDcJ9Mfn1f"
+  },
+  {
+    "text": "电机参数\t\t额定电压\t24V\r\n\t\t额定电流\t2.5A\r\n\t\t峰值电流\t7.5A\r\n\t\t额定扭矩\t2.5NM\r\n\t\t峰值扭矩\t6NM\r\n\t\t额定转速\t120rpm\r\n\t\t空载最大转速\t250rpm\r\n电机特征值\t\t减速比\t8：1\r\n\t\t极对数\t14\r\n结构与重量\t\t外径\t57mm\r\n\t\t高度\t49mm\r\n\t\t电机重量\t约314g\r\n编码器\t\t电机端编码器\t21bit\r\n\t\t负载端编码器\t16bit\r\n\t\t编码器类型\t磁编\r\n通讯\t\tCANOPEN\tCAN-10K/20K/50K/125K/250K/500K/800K/1000K\r\n\t\t串口\tUART-921600bps\r\n控制模式\t\t轮廓力矩\t串口/CANOPEN\r\n\t\t轮廓位置\t串口/CANOPEN\r\n\t\t轮廓速度\t串口/CANOPEN\r\n\t\tMIT模式\t串口/CANOPEN\r\n\t\t周期同步速度\tCANOPEN\r\n\t\t周期同步力矩\tCANOPEN\r\n\t\t周期同步位置\tCANOPEN\r\n保护\t\t过压保护\t软件过压保护，超过30V会关闭使能并报错\r\n\t\t欠压保护\t低于16V会触发硬件保护\r\n\t\t电机过温保护\t\"电机温度传感器超过120度会触发电机过温保护（值可由用户设定），\n电机失能并报错\"\r\n\t\t驱动过温保护\t\"电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错\"\r\n\t\t过速保护\t\"电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错\"\r\n\t\t过流保护\t母线电流超过阈值会触发硬件过流保护",
+    "rows": [
+      [
+        {
+          "text": "电机参数",
+          "rowspan": 7,
+          "colspan": 2
+        },
+        {
+          "text": "额定电压",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "24V",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定电流",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "2.5A",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "峰值电流",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "7.5A",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定扭矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "2.5NM",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "峰值扭矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "6NM",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定转速",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "120rpm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "空载最大转速",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "250rpm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机特征值",
+          "rowspan": 2,
+          "colspan": 2
+        },
+        {
+          "text": "减速比",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "8：1",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "极对数",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "14",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "结构与重量",
+          "rowspan": 3,
+          "colspan": 2
+        },
+        {
+          "text": "外径",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "57mm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "高度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "49mm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机重量",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "约314g",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "编码器",
+          "rowspan": 3,
+          "colspan": 2
+        },
+        {
+          "text": "电机端编码器",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "21bit",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "负载端编码器",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "16bit",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "编码器类型",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "磁编",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "通讯",
+          "rowspan": 2,
+          "colspan": 2
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CAN-10K/20K/50K/125K/250K/500K/800K/1000K",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "串口",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "UART-921600bps",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "控制模式",
+          "rowspan": 7,
+          "colspan": 2
+        },
+        {
+          "text": "轮廓力矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "轮廓位置",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "轮廓速度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "MIT模式",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步速度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步力矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步位置",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "保护",
+          "rowspan": 6,
+          "colspan": 2
+        },
+        {
+          "text": "过压保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "软件过压保护，超过30V会关闭使能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "欠压保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "低于16V会触发硬件保护",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机过温保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机温度传感器超过120度会触发电机过温保护（值可由用户设定），\n电机失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "驱动过温保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "过速保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "过流保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "母线电流超过阈值会触发硬件过流保护",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ]
+    ],
+    "blockId": "MfQPd8jPzo6VS4xf50PcgrJonyh"
+  },
+  {
+    "text": "电机参数\t\t额定电压\t48V\r\n\t\t额定电流\t11A\r\n\t\t峰值电流\t38A\r\n\t\t额定扭矩\t30NM\r\n\t\t峰值扭矩\t97NM\r\n\t\t额定转速\t40rpm\r\n\t\t空载最大转速\t60rpm\r\n电机特征值\t\t减速比\t48：1\r\n\t\t极对数\t14\r\n结构与重量\t\t外径\t76mm\r\n\t\t高度\t62mm\r\n\t\t电机重量\t约628g\r\n编码器\t\t电机端编码器\t16bit\r\n\t\t负载端编码器\t16bit\r\n\t\t编码器类型\t磁编\r\n通讯\t\tCANOPEN\tCAN-10K/20K/50K/125K/250K/500K/800K/1000K\r\n\t\t串口\tUART-921600bps\r\n\t\tEthercat\t\r\n控制模式\t\t轮廓力矩\t串口/CANOPEN/Ethercat\r\n\t\t轮廓位置\t串口/CANOPEN/Ethercat\r\n\t\t轮廓速度\t串口/CANOPEN/Ethercat\r\n\t\tMIT模式\t串口/CANOPEN/Ethercat\r\n\t\t周期同步速度\tCANOPEN/Ethercat\r\n\t\t周期同步力矩\tCANOPEN/Ethercat\r\n\t\t周期同步位置\tCANOPEN/Ethercat\r\n保护\t\t过压保护\t软件过压保护，超过30V会关闭使能并报错\r\n\t\t欠压保护\t低于16V会触发硬件保护\r\n\t\t电机过温保护\t\"电机温度传感器超过120度会触发电机过温保护（值可由用户设定），\n电机失能并报错\"\r\n\t\t驱动过温保护\t\"电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错\"\r\n\t\t过速保护\t\"电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错\"\r\n\t\t过流保护\t母线电流超过阈值会触发硬件过流保护",
+    "rows": [
+      [
+        {
+          "text": "电机参数",
+          "rowspan": 7,
+          "colspan": 2
+        },
+        {
+          "text": "额定电压",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "48V",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定电流",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "11A",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "峰值电流",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "38A",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定扭矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "30NM",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "峰值扭矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "97NM",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "额定转速",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "40rpm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "空载最大转速",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "60rpm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机特征值",
+          "rowspan": 2,
+          "colspan": 2
+        },
+        {
+          "text": "减速比",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "48：1",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "极对数",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "14",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "结构与重量",
+          "rowspan": 3,
+          "colspan": 2
+        },
+        {
+          "text": "外径",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "76mm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "高度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "62mm",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机重量",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "约628g",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "编码器",
+          "rowspan": 3,
+          "colspan": 2
+        },
+        {
+          "text": "电机端编码器",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "16bit",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "负载端编码器",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "16bit",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "编码器类型",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "磁编",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "通讯",
+          "rowspan": 3,
+          "colspan": 2
+        },
+        {
+          "text": "CANOPEN",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CAN-10K/20K/50K/125K/250K/500K/800K/1000K",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "串口",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "UART-921600bps",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "Ethercat",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "控制模式",
+          "rowspan": 7,
+          "colspan": 2
+        },
+        {
+          "text": "轮廓力矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN/Ethercat",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "轮廓位置",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN/Ethercat",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "轮廓速度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN/Ethercat",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "MIT模式",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "串口/CANOPEN/Ethercat",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步速度",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN/Ethercat",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步力矩",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN/Ethercat",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "周期同步位置",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "CANOPEN/Ethercat",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "保护",
+          "rowspan": 6,
+          "colspan": 2
+        },
+        {
+          "text": "过压保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "软件过压保护，超过30V会关闭使能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "欠压保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "低于16V会触发硬件保护",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "电机过温保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机温度传感器超过120度会触发电机过温保护（值可由用户设定），\n电机失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "驱动过温保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "过速保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "电机超过设定速度会触发软件保护（值可由用户设定），电机\n失能并报错",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ],
+      [
+        {
+          "text": "过流保护",
+          "rowspan": 1,
+          "colspan": 1
+        },
+        {
+          "text": "母线电流超过阈值会触发硬件过流保护",
+          "rowspan": 1,
+          "colspan": 1
+        }
+      ]
+    ],
+    "blockId": "AoixdttMmojX6kxUCLHctoOSnQc"
+  }
+]

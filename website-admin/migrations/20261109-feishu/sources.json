@@ -1,0 +1,63 @@
+[
+  {
+    "slug": "selection",
+    "label": "快速选型 · 电机参数表",
+    "category": "选型资料",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/wiki/C7SKwVeB8iJ2gTkeQE4cymV6nxv"
+  },
+  {
+    "slug": "jp57-08",
+    "label": "JP57-08 G1",
+    "category": "YONIQ AXIS",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/docx/GSSXdAIAJocehkxhpbEcmxKVnRe",
+    "productId": 1
+  },
+  {
+    "slug": "jp57-40",
+    "label": "JP57-40 G1",
+    "category": "YONIQ AXIS",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/docx/LW2ydbYwzoUKVmxVDAccMcdBntd",
+    "productId": 2
+  },
+  {
+    "slug": "db1-v24",
+    "label": "DB1-V24",
+    "category": "YONIQ DRIVE",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/docx/HQ30dgSqYoW9Z7xkozjcHs82nTc",
+    "productId": 4
+  },
+  {
+    "slug": "db1-v36",
+    "label": "DB1-V36",
+    "category": "YONIQ DRIVE",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/docx/T5YIdDLvJoelNlx2KaycLtdHnxd",
+    "productId": 5
+  },
+  {
+    "slug": "db1-v48",
+    "label": "DB1-V48",
+    "category": "YONIQ DRIVE",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/docx/B8zbdrASeoaAxyxKYDPcAwAanfe",
+    "productId": 6
+  },
+  {
+    "slug": "cf-1",
+    "label": "CF-1",
+    "category": "YONIQ LINK",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/docx/YEefdI5cMohwyXxAVggcyat1nag",
+    "productId": 7
+  },
+  {
+    "slug": "studio",
+    "label": "YONIQ STUDIO",
+    "category": "YONIQ STUDIO",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/wiki/EQ0ewITm0i3sYFkNSYecxgqtnhb",
+    "productId": 8
+  },
+  {
+    "slug": "serial-protocol",
+    "label": "串口协议手册",
+    "category": "协议手册",
+    "source": "https://tcnyx5kk9u7c.feishu.cn/docx/ZsBddgkFwodVhEx4PxAcgpUDnVc"
+  }
+]
